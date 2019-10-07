@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+ <script type="text/javascript">
+    //to make the code case insensitive
+    function formatComputerSelection(){
+      return computerSelection.toLowerCase();
+    }
+    function formatPlayerSelection(){
+      return playerSelection.toLowerCase();
+    }
+
+    //allows the user choice input into the dialog box
+    function playerPlay(){
+      return prompt("'Rock', 'Paper', or 'Scissors'?");
+    }
+
+    //allows computer to randomly select one of "rock", "paper" or "scissors"
+    function computerPlay(){
+      return choiceOption[Math.floor(Math.random()* choiceOption.length)];
+    }
+    
+    //controls what happens per-game round
+    function playRound(playerSelection, computerSelection){
+      
+      if (formatPlayerSelection () == "rock" && formatComputerSelection() == "paper"){
+          console.log(`YOU LOSE!! Paper covers Rock !!`);
+          console.log(`A.I chose ${computerSelection}`);
+          ++computerScore;
+          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+
+      } else if (formatPlayerSelection () == "paper" && formatComputerSelection() == "scissors"){
+          console.log(`YOU LOSE!! Scissors cuts Paper !!`);
+          console.log(`A.I chose ${computerSelection}`);
+          ++computerScore;
+          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+
+      } else if (formatPlayerSelection () == "scissors" && formatComputerSelection() == "rock"){
+          console.log(`YOU LOSE!! Rock breaks Scissors !!`);
+          console.log(`A.I chose ${computerSelection}`);
+          ++computerScore;
+          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+
+      } else if(formatPlayerSelection () == "rock" && formatComputerSelection() == "scissors"){
+          console.log(`YOU WIN!! Rock breaks Scissors !!`);
+          console.log(`A.I chose ${computerSelection}`);
+          ++playerScore;
+          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+
+      } else if (formatPlayerSelection () == "paper" && formatComputerSelection() == "rock"){
+          console.log(`YOU WIN!! Paper covers Rock !!`);
+          console.log(`A.I chose ${computerSelection}`);
+          ++playerScore;
+          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+
+      } else if (formatPlayerSelection () == "scissors" && formatComputerSelection() == "paper"){
+          console.log(`YOU WIN!! Scissors cuts Paper !!`);
+          console.log(`A.I chose ${computerSelection}`);
+          ++playerScore;
+          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+
+      } else if (formatPlayerSelection () === formatComputerSelection()){
+          console.log(`Its a tie!!`);
+          console.log(`A.I chose ${computerSelection}`);
+          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+
+      } else{
+          console.error("invalid value, round will be replayed");
+          alert("invalid value submitted, Kindly enter 'Rock' 'Paper' or 'Scissors'");
+          --round; //nullifies the round
+      }
+    }
+
+    //the game itself
+    function game(){
+        for (round=0; round< 5; round++){
+          playerSelection = playerPlay();
+          computerSelection = computerPlay();
+          playRound(playerSelection, computerSelection);
+        }
+    }
+
+    //Determines final winner or loser
+    function collateResults(){
+        (playerScore > computerScore)? alert (`YAY!! YOU WIN!!`) +
+        alert (`Final Score: ${playerScore}    A.I Score: ${computerScore} `):
+        (playerScore < computerScore)? alert (`Duh! you lose!, A.I wins this round`) +
+        alert (`Final Score: ${playerScore}    A.I Score: ${computerScore} `):
+        alert(`Its a tie`) + alert (`Final Score: ${playerScore}    A.I Score: ${computerScore}`);
+    }
+
+    //variable declarations and initialisation
+    let playerSelection;
+    let computerSelection;
+    let playerScore = 0;
+    let computerScore = 0;
+    let round;
+    const choiceOption = ["Rock", "Paper", "Scissors"];
+
+    //function call
+    game();
+    collateResults();
+ </script> 
+</body>
+</html>
