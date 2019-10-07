@@ -17,7 +17,7 @@
       return playerSelection.toLowerCase();
     }
 
-    //allows the user choice input into the dialog box
+    //allows the user to enter a choice into the dialog box
     function playerPlay(){
       return prompt("'Rock', 'Paper', or 'Scissors'?");
     }
@@ -78,7 +78,7 @@
       }
     }
 
-    //the game itself
+    //the workings of the game itself
     function game(){
         for (round=0; round< 5; round++){
           playerSelection = playerPlay();
@@ -96,7 +96,7 @@
         alert(`Its a tie`) + alert (`Final Score: ${playerScore}    A.I Score: ${computerScore}`);
     }
 
-    //variable declarations and initialisation
+    //variable initialisation and declaration
     let playerSelection;
     let computerSelection;
     let playerScore = 0;
