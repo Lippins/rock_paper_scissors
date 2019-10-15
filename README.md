@@ -1,2 +1,2 @@
-The rock, paper and scissors game.
-An assignment from the odin project.
+My attempt to create the rock paper and scissors game while learning web development through the odin project's curriculum. The biggest challenge i had was rewriting almost all my javascript code to accomodate the DOM manipulation required to link the HTML, CSS and javascript together.
+I leart how to use arrow functions, grab elements from html pages, toggle html classes using javascript and familiarised myself more with using the CSS transition property to make animations.

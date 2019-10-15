@@ -5,108 +5,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <title>Rock Paper Scissors</title>
 </head>
 <body>
- <script type="text/javascript">
-    //to make the code case insensitive
-    function formatComputerSelection(){
-      return computerSelection.toLowerCase();
-    }
-    function formatPlayerSelection(){
-      return playerSelection.toLowerCase();
-    }
+  <aside id="aside">
+    <h1>ROCK PAPER SCISSORS</h1>
+    <h4>Can You Beat The Computer?</h4>
+    <button id = "play">PLAY</button>
+  </aside>
 
-    //allows the user to enter a choice into the dialog box
-    function playerPlay(){
-      return prompt("'Rock', 'Paper', or 'Scissors'?");
-    }
-
-    //allows computer to randomly select one of "rock", "paper" or "scissors"
-    function computerPlay(){
-      return choiceOption[Math.floor(Math.random()* choiceOption.length)];
-    }
-    
-    //controls what happens per-game round
-    function playRound(playerSelection, computerSelection){
+  <section class= "dissapear" id="section">
+    <div class="container">
+      <div id="computerHand">
+        <h4>Computer</h4>
+        <p>0</p>
+        <img src="./images/rock.png" id = "computer" alt="computer_hand">
+      </div>
       
-      if (formatPlayerSelection () == "rock" && formatComputerSelection() == "paper"){
-          console.log(`YOU LOSE!! Paper covers Rock !!`);
-          console.log(`A.I chose ${computerSelection}`);
-          ++computerScore;
-          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+      <!-- results output source -->
+      <div id="winnerDisplay">
+        <h3>Pick An Option To Play</h3>
+      </div>
 
-      } else if (formatPlayerSelection () == "paper" && formatComputerSelection() == "scissors"){
-          console.log(`YOU LOSE!! Scissors cuts Paper !!`);
-          console.log(`A.I chose ${computerSelection}`);
-          ++computerScore;
-          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+      <div id="playerHand">
+        <h4>Player</h4>
+        <p>0</p>
+        <img src="./images/rock.png" id = "player" alt="player_hand">
+      </div>
 
-      } else if (formatPlayerSelection () == "scissors" && formatComputerSelection() == "rock"){
-          console.log(`YOU LOSE!! Rock breaks Scissors !!`);
-          console.log(`A.I chose ${computerSelection}`);
-          ++computerScore;
-          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
+      <div id="icons">
+        <div class="paperShowcase">
+          <button class="btn" id ="rock">
+            <img src="./images/rock.png" alt="">
+            <p>Rock</p>
+          </button>
+        </div>
+        <div class="rockShowcase">
+          <button class="btn" id ="paper">
+            <img src="./images/paper.png" alt="">
+            <p>Paper</p>
+          </button>
+        </div>
+        <div class="scissorsShowcase">
+          <button class="btn" id ="scissors">
+            <img src="./images/scissors.png" alt="">
+            <p>Scissors</p>
+          </button>
+        </div>
+      </div>
 
-      } else if(formatPlayerSelection () == "rock" && formatComputerSelection() == "scissors"){
-          console.log(`YOU WIN!! Rock breaks Scissors !!`);
-          console.log(`A.I chose ${computerSelection}`);
-          ++playerScore;
-          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
-
-      } else if (formatPlayerSelection () == "paper" && formatComputerSelection() == "rock"){
-          console.log(`YOU WIN!! Paper covers Rock !!`);
-          console.log(`A.I chose ${computerSelection}`);
-          ++playerScore;
-          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
-
-      } else if (formatPlayerSelection () == "scissors" && formatComputerSelection() == "paper"){
-          console.log(`YOU WIN!! Scissors cuts Paper !!`);
-          console.log(`A.I chose ${computerSelection}`);
-          ++playerScore;
-          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
-
-      } else if (formatPlayerSelection () === formatComputerSelection()){
-          console.log(`Its a tie!!`);
-          console.log(`A.I chose ${computerSelection}`);
-          alert(`Your Score: ${playerScore} A.I Score: ${computerScore}`)
-
-      } else{
-          console.error("invalid value, round will be replayed");
-          alert("invalid value submitted, Kindly enter 'Rock' 'Paper' or 'Scissors'");
-          --round; //nullifies the round
-      }
-    }
-
-    //the workings of the game itself
-    function game(){
-        for (round=0; round< 5; round++){
-          playerSelection = playerPlay();
-          computerSelection = computerPlay();
-          playRound(playerSelection, computerSelection);
-        }
-    }
-
-    //Determines final winner or loser
-    function collateResults(){
-        (playerScore > computerScore)? alert (`YAY!! YOU WIN!!`) +
-        alert (`Final Score: ${playerScore}    A.I Score: ${computerScore} `):
-        (playerScore < computerScore)? alert (`Duh! you lose!, A.I wins this round`) +
-        alert (`Final Score: ${playerScore}    A.I Score: ${computerScore} `):
-        alert(`Its a tie`) + alert (`Final Score: ${playerScore}    A.I Score: ${computerScore}`);
-    }
-
-    //variable initialisation and declaration
-    let playerSelection;
-    let computerSelection;
-    let playerScore = 0;
-    let computerScore = 0;
-    let round;
-    const choiceOption = ["Rock", "Paper", "Scissors"];
-
-    //function call
-    game();
-    collateResults();
- </script> 
+      <div class="replay">
+        <button id = "reset">Reset</button>
+        <button id="close">Exit Game</button>
+    </div>
+  </div>
+  </section>
+ 
+ <script type="text/javascript" src="./js/main.js"></script> 
 </body>
 </html>
