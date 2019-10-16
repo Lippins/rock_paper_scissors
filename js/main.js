@@ -58,11 +58,11 @@ function Game(){
         computerPlay();
   
         //updates player and computer hand signs based on choice
-        const playerHandIcon = document.querySelector("#player");
-        const computerHandIcon = document.querySelector("#computer");   
+        let playerHandIcon = document.querySelector("#player");
+        let computerHandIcon = document.querySelector("#computer");   
   
-        playerHandIcon.src = `../images/${playerChoice}.png`;
-        computerHandIcon.src = `../images/${computerChoice}.png`;
+        playerHandIcon.src = `./images/${playerChoice}.png`;
+        computerHandIcon.src = `./images/${computerChoice}.png`;
         
         //grabbing onto the results output source
         let winner = document.querySelector("#winnerDisplay h3");
