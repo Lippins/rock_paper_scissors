@@ -1,10 +1,10 @@
 //whole game
 function Game(){
+  const gameScreen = document.getElementById("section");
+  const challengeScreen = document.getElementById("aside");
   //move from challenge screen to game screen
   function enterGameScreen (){
     const play = document.querySelector("#play");
-    const challengeScreen = document.getElementById("aside");
-    const gameScreen = document.getElementById("section");
 
     play.addEventListener("click", ()=>{
       gameScreen.classList.toggle("dissapear");
@@ -14,29 +14,33 @@ function Game(){
 
   enterGameScreen();
 
-  function activateButtomButtons (){
+  function activateGameButtons (){
   //activate game reset
     function resetGame(){
-      const resetButton = document.getElementById("reset");
-      resetButton.addEventListener("click",()=>{
-        window.location.reload();
-      });
+      const resetButton = document.querySelectorAll(".reset");
+      resetButton.forEach((button) =>{
+        button.addEventListener("click", () =>{
+          window.location.reload();
+        })
+      })
     };
 
     resetGame();
 
     //activate closeGame
     function closeGame(){
-      const close = document.getElementById("close");
-      close.addEventListener("click", ()=>{
-        window.close();
-      });
+      const close = document.querySelectorAll(".close");
+      close.forEach((button) =>{
+        button.addEventListener("click", ()=>{
+          window.close();
+        })
+      })
     }
 
     closeGame();
   }
 
-  activateButtomButtons();
+  activateGameButtons();
 
   function playGame(){
     //initialise player and computer score
@@ -110,21 +114,23 @@ function Game(){
         updateScore();
   
         function declareWinner(){
-          if(playerScore == 5|| computerScore == 5){
+          let finalResults = document.querySelector("#finaliseGame");
+          let finalMessage = document.querySelector("#finaliseGame h1");
+          let finalPlayerScore = document.querySelector(".p");
+          let finalComputerScore = document.querySelector(".c");
+
+          finalPlayerScore.textContent = `YOUR SCORE: ${playerScore}`; 
+          finalComputerScore.textContent = `COMPUTER SCORE: ${computerScore}`;
+
+          if(playerScore == 5 || computerScore == 5){
+            finalResults.classList.toggle("dissapear");
+            gameScreen.classList.toggle("dissapear");
+
             if(playerScore>computerScore){
-              winner.textContent = "Amazing Play!! You Won The game!";
+              finalMessage.textContent = "Amazing Play!! You Won The game!";
               } else{
-                winner.textContent = "You Lose. Computer Takes This One";
+                finalMessage.textContent = "You Lose!! Computer Takes This One";
             }
-            //Prepares to leave game
-            function gameOut(){
-              window.location.reload();
-            }
-            //leave game
-            function out(){
-              setTimeout(gameOut, 1200);
-            }
-            out();
           }
         }
 
